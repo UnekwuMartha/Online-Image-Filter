@@ -1,0 +1,41 @@
+body {
+  background-image: linear-gradient(to right, #507 , #0aa);
+  
+  color: #eee;
+  
+  padding: 10px;
+}
+
+canvas {
+  border: 1px solid #555;
+  background-color: #fff;
+  width: 400px;
+  border: 1px solid #fff;
+  box-shadow: 2px 2px 5px #bbb;
+}
+
+input {
+  padding: 5px 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  color: #000;
+  font-size: 18px;
+  margin-right: 5px;
+  border: 1px solid #fff;
+  box-shadow: 2px 2px 5px #bbb;
+}
+
+input:visited, input:hover, input:active {
+  background-color: #777;
+  color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  * {
+    display: block;
+  }
+  
+  body {
+    text-align: center;
+  }
+}
