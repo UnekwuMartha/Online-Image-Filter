@@ -176,11 +176,9 @@ function loadBlur(){
       reset(image);
       blurFilter();
       filterStatus();
-      image.drawTo(canvas);
     } else {
       blurFilter();
       filterStatus();
-      image.drawTo(canvas);
     }
   }
 }
