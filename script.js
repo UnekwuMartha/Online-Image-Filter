@@ -1,6 +1,7 @@
 var image = null;
 var copyImage = null;
 var canvas = null;
+var isFiltered = false;
 
 function loadImage(){
   var file = document.getElementById("image_file");
@@ -20,9 +21,16 @@ function isLoaded(image){
 
 function loadgreyScale(){
   if(isLoaded(image)){
-    image = copyImage;
-    greyFilter();
-    image.drawTo(canvas);
+    if(isFiltered){
+      reset(image);
+      greyFilter();
+      filterStatus();
+      image.drawTo(canvas);
+    } else {
+      greyFilter();
+      filterStatus();
+      image.drawTo(canvas);
+    }
   }
 }
 
@@ -39,9 +47,16 @@ function greyFilter(){
 
 function loadRed(){
   if(isLoaded(image)){
-    redFilter();
-    image = copyImage;
-    image.drawTo(canvas);
+    if(isFiltered){
+      reset(image);
+      redFilter();
+      filterStatus();
+      image.drawTo(canvas);
+    } else {
+      redFilter();
+      filterStatus();
+      image.drawTo(canvas);
+    }
   }
 }
 
@@ -64,9 +79,16 @@ function redFilter(){
 
 function loadRainbow(){
   if(isLoaded(image)){
-    image = copyImage;
-    rainbowFilter();
-    image.drawTo(canvas);
+    if(isFiltered){
+      reset(image);
+      rainbowFilter();
+      filterStatus();
+      image.drawTo(canvas);
+    } else {
+      rainbowFilter();
+      filterStatus();
+      image.drawTo(canvas);
+    }
   }
 }
 
@@ -150,8 +172,16 @@ function rainbowFilter(){
 
 function loadBlur(){
   if(isLoaded(image)){
-    image = copyImage;
-    blurFilter();
+    if(isFiltered){
+      reset(image);
+      blurFilter();
+      filterStatus();
+      image.drawTo(canvas);
+    } else {
+      blurFilter();
+      filterStatus();
+      image.drawTo(canvas);
+    }
   }
 }
 
@@ -195,9 +225,9 @@ function average(pixel){
 }
 
 function reset(img){
-  img = copyImage;
-  img.drawTo(canvas);
-}
+    img = copyImage;
+    img.drawTo(canvas);
+  }
 
 // function isImageFiltered(){
 //   for(var i of image.values()){
@@ -222,4 +252,8 @@ function download(){
 
   // Simulate a click on the link to trigger the download
   link.click();
+}
+
+function filterStatus(){
+  isFiltered = true;
 }
